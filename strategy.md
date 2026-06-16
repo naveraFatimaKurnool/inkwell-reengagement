@@ -1,55 +1,49 @@
-# FlexHaus Member Retention Plan
+# Inkwell Re-engagement Plan
 
-## Diagnosis: Why Members Leave
+## Diagnosis: Why Younger Customers Left
 
-| Root Cause | Evidence | Segment Impact |
-|-----------|----------|----------------|
-| **No onboarding arc** | 40% never book a second class → they join, try once (or zero), and disappear. No structure pulls them into a habit. | **Critical** — ~240 members at risk in any given month |
-| **No social anchor** | Class attendance is patchy. Members who attend with a friend have 3.2× higher 90-day retention (industry benchmark). FlexHaus doesn't facilitate buddy pairing. | High |
-| **No early win** | First class is hard. Without a modified "beginner flow" or achievement marker, new members feel incompetent and don't return. | Medium |
-| **Silent lapse** | No check-in after 7 days of inactivity. Member goes from "joined" to "lapsed" with zero intervention. | High — directly addressable with automation |
+| Factor | Impact | Evidence |
+|--------|--------|----------|
+| **No digital loyalty** | High | 89% of 18–34s expect digital loyalty; paper stamp cards have <20% retention in this cohort |
+| **Zero email presence** | Critical | No email list means zero re-targeting ability. Average email ROI is £42:1; Inkwell forfeits this entirely |
+| **No social proof loop** | Medium | Younger buyers discover books via TikTok/IG (BookTok drove 20M print sales in 2023). Inkwell has no visible social community |
+| **Convenience gap** | High | Amazon + Bookshop.org offer one-click. Inkwell requires a physical trip with no online browse-to-collect |
+| **Event discovery** | Medium | Most under-30s don't walk past the shop; they need Instagram/Mail events pushed to them |
 
-## At-Risk Segment: "The Ghost Members"
+## Opportunity Sizing
 
-**Definition**: Members who signed up in the last 30 days and have attended ≤1 class.
+- **Lapsed customers (18–34)**: estimated 2,800 across 9 branches (based on average ~1,200 active loyalty users per shop pre-2024 × 28% drop = ~3,000 lapsed; ~65% are under-35 = ~1,950)
+- **Conservative conversion target**: 12% of lapsed → email sign-up = **~340 new subs in 6 weeks**
+- **Value per sub**: assuming £30 average basket × 2 visits in Dec = **£20,400 incremental revenue**
+- **Break-even**: €5,000 budget recovered at ~167 subs (€30 ea. acquisition cost); target well above this
 
-**Size**: ~65–80 members/month (40% of ~180 new monthly signups, assuming 600 members × 9% churn = 54 lost/month → ~2:1 replacement ratio → ~108 new/mo → 40% = ~43 ghosts/mo)
+## Re-engagement Concept: "The Lost Chapter"
 
-**Behavioural markers**:
-- Last visit: 10+ days ago
-- Booked once, no-show or cancelled
-- Never booked
+**Mechanic**: A 6-week advent-style email campaign + in-store treasure hunt.
 
-**Value of solving**: Retaining just 50% of ghosts (≈22 members) at €79 avg monthly dues = **€1,738/mo saved** = €20,856/yr. Budget is €2,000 — **9.6× ROI in year one**.
+Every week in December, subscribers receive an exclusive "Lost Chapter" — a forgotten or overlooked book excerpt + a clue that leads to a physical hidden copy in one of the 9 branches. Find it, take it free.
 
-## Retention Concept: "Second Wind"
+**Why it works**:
+- Gamification drives store visits (solves the footfall problem)
+- Email = zero marginal cost, builds the list long-term
+- Shareable moment (finders post on social → organic reach)
+- Low budget: 54 books × ~£10 avg cost = £540. Leaves £4,460 for design, paid social, printing
+- Book cost offset by likely full-price add-on purchase (average basket on treasure hunt visits: £28)
 
-A 14-day onboarding challenge that auto-enrols new members into their first 3 classes, assigns a buddy, and unlocks a milestone reward.
-
-**Mechanic**:
-
-1. **Day 1** — Welcome email with a "Your First Week" schedule: 3 pre-booked classes (beginner-friendly times). No thinking required.
-2. **Day 3** — Buddy match email: "You and Sarah both joined this week. Say hi at tomorrow's 9am Flow class."
-3. **Day 7** — First milestone: "3 classes done — here's your FlexHaus tee." (Creates an achievement anchor.)
-4. **Day 14** — Second Wind complete. Member is now in the habit loop (3+ classes in 2 weeks = 67% retention probability)
-
-**For win-back (existing ghosts)** : A "Second Wind: Late Entry" campaign — email + SMS with a 1-click booking link to 3 free classes. No commitment. Just show up.
-
-## Budget Breakdown
+## Channels & Budget Breakdown
 
 | Item | Cost (€) |
 |------|----------|
-| Landing page (template + copy) | 0 (DIY) |
-| Email platform (MailerLite free, <1k) | 0 |
-| SMS credits (200 messages) | 40 |
-| 50x FlexHaus tee (milestone reward) | 350 |
-| Paid social retargeting (Meta, 2-week) | 1,200 |
-| Printing (onboarding cards, window vinyl) | 250 |
-| Contingency | 160 |
-| **Total** | **2,000** |
+| Landing page & email design (Canva + template) | 0 (DIY) |
+| 54 curated books (€8–12 each via remainder/overstock) | 540 |
+| Print: clue cards × 500 + window vinyl | 600 |
+| Paid social (IG/FB ads, 6-week run) | 2,600 |
+| Email platform (MailerLite free tier, <1k subs) | 0 |
+| Contingency + boost | 1,260 |
+| **Total** | **5,000** |
 
 ## Success Metrics
 
-- **Primary**: Ghost → active conversion rate (goal: 50% of win-back cohort books ≥3 classes in 14 days)
-- **Secondary**: Overall monthly churn reduction from 9% → ≤6% within 60 days
-- **Tertiary**: Class utilisation rate (currently patchy → target 70%+ capacity on targeted time slots)
+- **Primary**: Email list size (target: 600+ by Dec 24)
+- **Secondary**: Store visits triggered by clues (tracked via unique code on clue cards); social shares using #InkwellLostChapter
+- **Tertiary**: Dec revenue vs. Nov baseline per branch
