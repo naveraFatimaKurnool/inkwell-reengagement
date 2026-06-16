@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inkwell Card — Join the Rewards</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #1a1a2e;
+      --accent: #c94040;
+      --cream: #faf6f0;
+      --gold: #d4a853;
+      --gray: #5a5a6e;
+      --radius: 12px;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ── hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--ink) 0%, #2d2d44 100%);
+      color: #fff;
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: var(--accent);
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── stamp tracker ── */
+    .tracker {
+      max-width: 640px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+    .tracker h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .stamps {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 6px;
+      max-width: 360px;
+      margin: 0 auto 1rem;
+    }
+    .stamp {
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #e8e0d4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gray);
+      transition: all 0.3s;
+    }
+    .stamp.filled {
+      background: var(--gold);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(212,168,83,0.35);
+    }
+    .stamp.free {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    .tracker .progress-text {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── signup form ── */
+    .signup {
+      max-width: 480px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+    }
+    .signup .card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .signup h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.25rem;
+    }
+    .signup .sub {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+      color: var(--gray);
+    }
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border 0.2s;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .checkbox-group {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+      margin: 1rem 0;
+    }
+    .checkbox-group input { width: auto; margin-top: 0.25rem; }
+    .checkbox-group label { font-size: 0.85rem; color: var(--gray); text-transform: none; letter-spacing: normal; }
+    .btn {
+      width: 100%;
+      padding: 0.85rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #b53333;
+      transform: translateY(-1px);
+    }
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .signup .fine {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-top: 1rem;
+    }
+
+    /* ── perks ── */
+    .perks {
+      max-width: 640px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+    }
+    .perks h2 {
+      text-align: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+    }
+    .perk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .perk {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .perk .icon { font-size: 1.8rem; margin-bottom: 0.25rem; }
+    .perk h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+    .perk p { font-size: 0.85rem; color: var(--gray); }
+
+    /* ── success state ── */
+    .success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+    .success.show { display: block; }
+    .success .icon { font-size: 3rem; }
+    .success h2 { margin: 0.5rem 0; }
+    .success p { color: var(--gray); }
+
+    /* ── footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+      color: var(--gray);
+      border-top: 1px solid #e8e0d4;
+    }
+    footer strong { color: var(--ink); }
+
+    /* ── responsive ── */
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.7rem; }
+      .stamps { gap: 4px; }
+      .signup .card { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════ HERO ════ -->
+  <section class="hero">
+    <div class="badge">Just Launched</div>
+    <h1>The <span>Inkwell</span> Card</h1>
+    <p>Buy 9 books across any of our 9 branches, get the 10th free. Digital, not paper.</p>
+  </section>
+
+  <!-- ════ STAMP TRACKER ════ -->
+  <section class="tracker" id="trackerSection">
+    <h2>Your stamps</h2>
+    <div class="stamps" id="stampGrid">
+      <div class="stamp" data-index="0"></div>
+      <div class="stamp" data-index="1"></div>
+      <div class="stamp" data-index="2"></div>
+      <div class="stamp" data-index="3"></div>
+      <div class="stamp" data-index="4"></div>
+      <div class="stamp" data-index="5"></div>
+      <div class="stamp" data-index="6"></div>
+      <div class="stamp" data-index="7"></div>
+      <div class="stamp free" data-index="8">FREE</div>
+    </div>
+    <p class="progress-text" id="progressText">0 stamps — 9 more to a free book</p>
+    <p style="font-size:0.8rem;color:var(--gray);">Ask in-store to add stamps to your account.</p>
+  </section>
+
+  <!-- ════ SIGNUP FORM ════ -->
+  <section class="signup" id="signupSection">
+    <div class="card">
+      <div id="formContainer">
+        <h3>Join the Rewards</h3>
+        <p class="sub">Get your first stamp free when you sign up. No app, no paper.</p>
+        <form id="signupForm" novalidate>
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" id="name" required placeholder="e.g. Alex Rivers">
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" required placeholder="alex@example.com">
+          </div>
+          <div class="form-group">
+            <label for="branch">Your nearest Inkwell</label>
+            <input type="text" id="branch" list="branches" placeholder="e.g. Spitalfields">
+            <datalist id="branches">
+              <option value="Spitalfields">
+              <option value="Bloomsbury">
+              <option value="Shoreditch">
+              <option value="Brixton">
+              <option value="Hackney">
+              <option value="Islington">
+              <option value="Greenwich">
+              <option value="Notting Hill">
+              <option value="Clapham">
+            </datalist>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="consent" required>
+            <label for="consent">I'd like to receive book recommendations and Inkwell offers via email. Unsubscribe anytime.</label>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Get my free stamp</button>
+        </form>
+        <p class="fine">Your data stays with Inkwell. No sharing, no spam. By signing up you agree to our <a href="#" style="color:var(--accent);">Privacy Policy</a>.</p>
+      </div>
+      <div class="success" id="successState">
+        <div class="icon">🎉</div>
+        <h2>You're in!</h2>
+        <p>Your digital Inkwell Card is ready. Check your email for a welcome message — and we've added your free first stamp.</p>
+        <p style="margin-top:0.5rem;"><strong>Your email:</strong> <span id="displayEmail"></span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ PERKS ════ -->
+  <section class="perks">
+    <h2>Why join?</h2>
+    <div class="perk-grid">
+      <div class="perk">
+        <div class="icon">📚</div>
+        <h4>10th book free</h4>
+        <p>Buy 9, get one free across all 9 branches — your stamps stack.</p>
+      </div>
+      <div class="perk">
+        <div class="icon">🎂</div>
+        <h4>Birthday bonus</h4>
+        <p>A free stamp on your birthday. Because you deserve it.</p>
+      </div>
+      <div class="perk">
+        <div class="icon">📖</div>
+        <h4>Curated picks</h4>
+        <p>Weekly recommendations from the booksellers who know your shelf.</p>
+      </div>
+      <div class="perk">
+        <div class="icon">🎟️</div>
+        <h4>Member events</h4>
+        <p>Exclusive launch evenings, author talks, and book-club invites.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FOOTER ════ -->
+  <footer>
+    <p><strong>Inkwell Books</strong> — 9 branches, one neighbourhood at a time.</p>
+    <p style="margin-top:0.3rem;">© 2024 Inkwell Books Ltd</p>
+  </footer>
+
+  <script>
+    const STORAGE_KEY = 'inkwell_stamps';
+    const USER_KEY = 'inkwell_user';
+
+    let stamps = []; // 0–8: 0=empty, 1=filled, 8 is the FREE slot
+    let user = null;
+
+    function loadState() {
+      try {
+        const s = localStorage.getItem(STORAGE_KEY);
+        stamps = s ? JSON.parse(s) : new Array(9).fill(0);
+        const u = localStorage.getItem(USER_KEY);
+        user = u ? JSON.parse(u) : null;
+      } catch { stamps = new Array(9).fill(0); user = null; }
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(stamps));
+      if (user) localStorage.setItem(USER_KEY, JSON.stringify(user));
+    }
+
+    function renderStamps() {
+      const grid = document.getElementById('stampGrid');
+      const progress = document.getElementById('progressText');
+      let filled = stamps.filter(s => s === 1).length;
+      if (filled > 8) filled = 8; // free slot is separate
+      const freeClaimed = stamps[8] === 1;
+
+      grid.querySelectorAll('.stamp').forEach((el, i) => {
+        el.className = 'stamp';
+        if (i === 8) el.classList.add('free');
+        if (stamps[i] === 1) {
+          el.classList.add('filled');
+          el.textContent = i === 8 ? 'FREE ✓' : '✓';
+        } else {
+          el.textContent = i === 8 ? 'FREE' : '';
+        }
+      });
+
+      if (freeClaimed) {
+        progress.textContent = '🎉 You\'ve claimed your free book! Keep collecting for the next one.';
+      } else if (filled >= 8) {
+        progress.textContent = '✨ 8 stamps — visit any branch to claim your free book!';
+      } else {
+        progress.textContent = `${filled} stamp${filled !== 1 ? 's' : ''} — ${8 - filled} more to a free book`;
+      }
+    }
+
+    function showSignedInState(email) {
+      document.getElementById('formContainer').style.display = 'none';
+      const success = document.getElementById('successState');
+      success.classList.add('show');
+      document.getElementById('displayEmail').textContent = email;
+      document.getElementById('signupSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const branch = document.getElementById('branch').value.trim();
+      const consent = document.getElementById('consent').checked;
+
+      if (!name || !email || !consent) return;
+
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Signing up…';
+
+      // Simulate submission — in production, POST to your email API
+      setTimeout(() => {
+        // Give first stamp free
+        stamps[0] = 1;
+        user = { name, email, branch, joined: new Date().toISOString() };
+        saveState();
+        renderStamps();
+        showSignedInState(email);
+
+        // Store in session for demo
+        sessionStorage.setItem('inkwell_just_signed', 'true');
+        btn.disabled = false;
+        btn.textContent = 'Get my free stamp';
+      }, 800);
+    }
+
+    // ── Init ──
+    loadState();
+    renderStamps();
+
+    // If already signed up, show success
+    if (user) {
+      showSignedInState(user.email);
+    }
+
+    document.getElementById('signupForm').addEventListener('submit', handleSubmit);
+
+    // ── Demo: add stamp (for testing) ──
+    // Double-click the tracker to simulate a stamp (in-store scan)
+    document.getElementById('stampGrid').addEventListener('dblclick', function(e) {
+      if (!user) return;
+      const stampEl = e.target.closest('.stamp');
+      if (!stampEl) return;
+      const idx = parseInt(stampEl.dataset.index, 10);
+      if (stampEl.classList.contains('filled')) return;
+      stamps[idx] = 1;
+      saveState();
+      renderStamps();
+    });
+  </script>
+</body>
+</html>
